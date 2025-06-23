@@ -10,6 +10,9 @@ fi
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 echo "Adicionado repositório do Flathub"
 
+# Remove libreoffice nativo
+sudo dnf remove libreoffice-calc libreoffice-impress libreoffice-writer
+
 # Array com os IDs dos pacotes
 appsFlatpak=(
 	app.zen_browser.zen
@@ -31,7 +34,6 @@ appsFlatpak=(
 	com.todoist.Todoist
 	de.haeckerfelix.Fragments
 	io.github.flattool.Warehouse
-	io.gitlab.adhami3310.Converter
 	io.missioncenter.MissionCenter
 	it.mijorus.gearlever
 	it.mijorus.smile
@@ -39,10 +41,10 @@ appsFlatpak=(
 	me.iepure.devtoolbox
 	page.codeberg.libre_menu_editor.LibreMenuEditor
 	page.kramo.Cartridges
-	org.gnome.eog
 	org.gnome.design.Lorem
 	org.gnome.gitlab.somas.Apostrophe
 	org.gnome.Shotwell
+	org.libreoffice.LibreOffice
 	org.localsend.localsend_app
 	org.nickvision.tubeconverter
 	org.onlyoffice.desktopeditors    

@@ -1,5 +1,4 @@
 function flatrun() {
-    # Encontra o ID do aplicativo Flatpak com base no nome fornecido
     local app_id=$(flatpak list --columns=application | grep -F -i "${1}")
 
     if [[ -n "${app_id}" ]]; then
@@ -7,7 +6,6 @@ function flatrun() {
     else
         echo "Aplicação '${1}' não encontrada entre os flatpaks instalados"
 
-        # Verificar se o Flatpak existe no repositório remoto
         local search_results=$(flatpak search "${1}" --columns='application,version' | awk 'NR==1 || NR<=6 {print $1, $2}' | grep -i "${1}" | column -t -N "App ID",Version)
         if [[ -n "${search_results}" ]]; then
             echo "Os seguintes aplicativos correspondentes foram encontrados nos repositórios do Flatpak:"
