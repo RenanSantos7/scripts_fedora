@@ -2,7 +2,7 @@
 
 A collection of shell scripts made for Fedora. It is compatible with bash and zsh.
 
-## How to users
+## How to use
 
 ### Directly
 
