@@ -1,4 +1,4 @@
-function rnd() {
+function rndoc() {
 	if [[ -z "$1" ]]; then
 		xdg-open https://reactnative.dev/
 		return
