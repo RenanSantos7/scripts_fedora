@@ -1,0 +1,38 @@
+#!/bin/bash
+
+set -e
+
+# Apaga a pasta android se ela já existir
+if [ -d android ]; then
+echo "🗑️ Pasta 'android' já existe. Removendo..."
+rm -rf android
+echo "✅ Pasta 'android' removida."
+fi
+
+# Apaga a pasta android se ela já existir
+if [ -d ios ]; then
+echo "🗑️ Pasta 'ios' já existe. Removendo..."
+rm -rf ios
+echo "✅ Pasta 'ios' removida."
+fi
+
+echo "🚧 Iniciando prebuild..."
+npx expo prebuild
+
+echo "🏗️ Buildando release Android..."
+cd android
+./gradlew assembleRelease
+cd ..
+
+# Renomeia o APK final
+APK_PATH="android/app/build/outputs/apk/release/app-release.apk"
+DEST_APK="aoba.apk"
+if [ -f "${APK_PATH}" ]; then
+cp "${APK_PATH}" ~/Downloads/"${DEST_APK}"
+echo "✅ APK renomeado para ${DEST_APK}"
+else
+echo "❌ Não foi possível encontrar o APK em ${APK_PATH}"
+exit 1
+fi
+
+echo "🎉 Build finalizado com sucesso! APK: ${DEST_APK}, branch: build-${nome}"

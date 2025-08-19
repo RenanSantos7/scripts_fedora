@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+if [[ -z "$1" ]]; then
+    dnf list --installed
+    exit 0
+fi
+
+if ! dnf list --installed | grep --quiet -- "$1"; then
+    echo "$1 não instalado pelo dnf"
+else
+    dnf list --installed | grep -- "$1"
+fi

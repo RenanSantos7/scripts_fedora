@@ -88,6 +88,23 @@ done
 
 echo "✅ Instalados apps com DNF"
 
+mkdir -p "$HOME/.config/micro"
+cat << 'EOF' | tee -a "$HOME/.config/micro/settings.json" > /dev/null
+
+{
+    "autosave": 3,
+    "basename": true,
+    "colorscheme": "atom-dark",
+    "hlsearch": true,
+    "keymenu": true,
+    "softwrap": true,
+    "wordwrap": true
+}
+
+EOF
+
+echo "✅ configurado micro"
+
 # Trocar o shell para ZSH
 touch $HOME/.zshrc 
 
@@ -148,23 +165,6 @@ echo "✅ zsh configurado"
 #
 #
 #
-
-mkdir -p "$HOME/.config/micro"
-cat << 'EOF' | tee -a "$HOME/.config/micro/settings.json" > /dev/null
-
-{
-    "autosave": 3,
-    "basename": true,
-    "colorscheme": "atom-dark",
-    "hlsearch": true,
-    "keymenu": true,
-    "softwrap": true,
-    "wordwrap": true
-}
-
-EOF
-
-echo "✅ configurado micro"
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash 
 echo "⬇️ baixado nvm"
